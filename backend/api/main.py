@@ -1,15 +1,10 @@
 from fastapi import FastAPI
 
+from .routes import router
+
 app = FastAPI(
     title="CURE Protocol API",
     version="1.0.0",
 )
 
-
-@app.get("/api/v1/health")
-def health_check():
-    return {
-        "status": "ok",
-        "service": "CURE Protocol API",
-        "version": "1.0.0",
-    }
+app.include_router(router)
